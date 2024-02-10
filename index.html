@@ -1,0 +1,206 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hidden Item in Glass</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: black;
+    }
+    .container {
+        display: flex;
+        border: 1px solid white;
+        padding-top: 20px;
+        
+    }
+    .glass {
+        width: 100px;
+        height: 150px;
+        background: url(Screenshot_2024-02-10_095220-removebg-preview.png) no-repeat;
+        background-size: contain;
+        margin: 20px;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+    .glass:hover {
+        transform: scale(1);
+        transform: translateY(-50px);
+    }
+    .hidden {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        font-size: 40px;
+    }
+    .glass.revealed .hidden {
+        display: block;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-left: 15px;
+    }
+
+</style>
+</head>
+<body>
+
+    <h1>Happy Teddy Day</h1>
+
+<div class="container" id="container">
+    <div class="glass one" onclick="reveal(this)">
+        <div class="hidden">🧸</div>
+    </div>
+    <div class="glass two" onclick="reveal(this)">
+        <div class="hidden"></div>
+    </div>
+    <div class="glass three" onclick="reveal(this)">
+        <div class="hidden"></div>
+    </div>
+</div>
+
+<button onclick="shuffle()">Shuffle</button>
+
+<script>
+function shuffle() {
+    var container = document.getElementById('container');
+    for (var i = container.children.length; i >= 0; i--) {
+        container.appendChild(container.children[Math.random() * i | 0]);
+    }
+}
+
+function reveal(element) {
+    var glasses = document.querySelectorAll('.glass');
+    glasses.forEach(function(glass) {
+        glass.classList.remove('revealed');
+    });
+    element.classList.add('revealed');
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    shuffle();
+});
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hidden Item in Glass</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: black;
+    }
+    .container {
+        display: flex;
+        border: 1px solid white;
+        padding-top: 20px;
+        
+    }
+    .glass {
+        width: 100px;
+        height: 150px;
+        background: url(Screenshot_2024-02-10_095220-removebg-preview.png) no-repeat;
+        background-size: contain;
+        margin: 20px;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.5s, top 0.5s;
+    }
+    .hidden {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        font-size: 40px;
+    }
+    .glass.revealed .hidden {
+        display: block;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-left: 15px;
+    }
+
+</style>
+</head>
+<body>
+
+    <h1>Happy Teddy Day</h1>
+
+<div class="container" id="container">
+    <div class="glass one" onclick="reveal(this)">
+        <div class="hidden">🧸</div>
+    </div>
+    <div class="glass two" onclick="reveal(this)">
+        <div class="hidden"></div>
+    </div>
+    <div class="glass three" onclick="reveal(this)">
+        <div class="hidden"></div>
+    </div>
+</div>
+
+<button onclick="shuffle()">Shuffle</button>
+
+<script>
+function shuffle() {
+    var container = document.getElementById('container');
+    for (var i = container.children.length; i >= 0; i--) {
+        container.appendChild(container.children[Math.random() * i | 0]);
+    }
+}
+
+function reveal(element) {
+    var glasses = document.querySelectorAll('.glass');
+    glasses.forEach(function(glass) {
+        glass.classList.remove('revealed');
+        glass.style.top = '0';
+    });
+    element.classList.add('revealed');
+    element.style.top = '-50px'; // Apply translateY transition
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    shuffle();
+});
+</script>
+
+</body>
+</html>
+
